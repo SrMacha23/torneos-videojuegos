@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class JugadorDAO {
+public class JugadorDAO implements IJugadorDAO {
 
     @Autowired
     private DataSource dataSource;

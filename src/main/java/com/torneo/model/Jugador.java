@@ -1,6 +1,13 @@
 package com.torneo.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "jugadores")
 public class Jugador {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private String nickname;

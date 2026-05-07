@@ -1,6 +1,6 @@
 package com.torneo.service;
 
-import com.torneo.dao.JugadorDAO;
+import com.torneo.dao.IJugadorDAO;
 import com.torneo.model.Jugador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,10 +8,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Service
-public class JugadorService {
+public class JugadorService implements IJugadorService {
 
     @Autowired
-    private JugadorDAO jugadorDAO;
+    private IJugadorDAO jugadorDAO;
 
     public List<Jugador> obtenerTodos() throws SQLException {
         return jugadorDAO.findAll();

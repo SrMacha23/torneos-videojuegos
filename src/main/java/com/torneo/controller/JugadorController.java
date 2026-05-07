@@ -1,7 +1,8 @@
 package com.torneo.controller;
 
+
+import com.torneo.service.IJugadorService;
 import com.torneo.model.Jugador;
-import com.torneo.service.JugadorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.List;
 public class JugadorController {
 
     @Autowired
-    private JugadorService jugadorService;
+    private IJugadorService jugadorService;
 
     @GetMapping
     @Operation(summary = "Obtener todos los jugadores")
