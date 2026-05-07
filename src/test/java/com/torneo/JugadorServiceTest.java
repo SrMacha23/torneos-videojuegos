@@ -30,6 +30,17 @@ class JugadorServiceTest {
     }
 
     @Test
+    void testCrearConNombreVacio() throws SQLException {
+        Jugador jugador = new Jugador(null, "", "srmacha", "luis@mail.com", "FIFA");
+
+        jugadorService.crear(jugador);
+
+        verify(jugadorDAO, times(1)).save(jugador);
+    }
+
+
+
+    @Test
     void testObtenerTodos() throws SQLException {
         List<Jugador> jugadores = Arrays.asList(
             new Jugador(1, "Luis", "srmacha", "luis@mail.com", "FIFA"),
@@ -43,6 +54,7 @@ class JugadorServiceTest {
         verify(jugadorDAO, times(1)).findAll();
     }
 
+    
     @Test
     void testObtenerPorId() throws SQLException {
         Jugador jugador = new Jugador(1, "Luis", "srmacha", "luis@mail.com", "FIFA");
