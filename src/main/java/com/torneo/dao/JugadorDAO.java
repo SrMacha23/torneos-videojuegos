@@ -33,12 +33,12 @@ public class JugadorDAO implements IJugadorDAO {
         return lista;
     }
 
-    public Jugador findById(int id) throws SQLException {
-        String sql = "SELECT id, nombre, nickname, email, videojuego FROM jugadores WHERE id = ?";
-        try (Connection con = dataSource.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+public Jugador findById(int id) throws SQLException {
+    String sql = "SELECT id, nombre, nickname, email, videojuego FROM jugadores WHERE id = ?";
+    try (Connection con = dataSource.getConnection();
+         PreparedStatement ps = con.prepareStatement(sql);) {
+        ps.setInt(1, id);
+        try (ResultSet rs = ps.executeQuery()) {
             if (rs.next()) {
                 return new Jugador(
                     rs.getInt("id"),
@@ -49,8 +49,11 @@ public class JugadorDAO implements IJugadorDAO {
                 );
             }
         }
-        return null;
     }
+    return null;
+}
+
+
 
     public void save(Jugador j) throws SQLException {
         String sql = "INSERT INTO jugadores (nombre, nickname, email, videojuego) VALUES (?, ?, ?, ?)";
