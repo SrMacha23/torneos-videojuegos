@@ -16,7 +16,7 @@ public class JugadorDAO implements IJugadorDAO {
 
     public List<Jugador> findAll() throws SQLException {
         List<Jugador> lista = new ArrayList<>();
-        String sql = "SELECT * FROM jugadores";
+        String sql = "SELECT id, nombre, nickname, email, videojuego FROM jugadores";
         try (Connection con = dataSource.getConnection();
              Statement st = con.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
@@ -34,7 +34,7 @@ public class JugadorDAO implements IJugadorDAO {
     }
 
     public Jugador findById(int id) throws SQLException {
-        String sql = "SELECT * FROM jugadores WHERE id = ?";
+        String sql = "SELECT id, nombre, nickname, email, videojuego FROM jugadores WHERE id = ?";
         try (Connection con = dataSource.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
