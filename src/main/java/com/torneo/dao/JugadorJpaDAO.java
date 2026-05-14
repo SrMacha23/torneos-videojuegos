@@ -2,9 +2,11 @@ package com.torneo.dao;
 
 import com.torneo.model.Jugador;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
+@Primary
 @Repository("jugadorJpaDAO")
 public class JugadorJpaDAO implements IJugadorDAO {
 
